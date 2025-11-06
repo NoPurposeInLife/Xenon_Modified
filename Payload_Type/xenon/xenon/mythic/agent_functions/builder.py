@@ -14,15 +14,15 @@ import donut
 from ..utils.packer import serialize_int, serialize_bool, serialize_string, generate_raw_c2_transform_definitions
 
 class XenonAgent(PayloadType):
-    name = "xenon"
+    name = "xenon_modified"
     file_extension = "exe"
-    author = "@c0rnbread"
+    author = "@Dillon"
     supported_os = [SupportedOS.Windows]
     wrapper = False
     wrapped_payloads = []
     note = """A Cobalt Strike-like agent for Windows targets. Version: v0.0.2"""
     supports_dynamic_loading = True
-    c2_profiles = ["httpx"]
+    c2_profiles = ["httpx", "httpx_modified"]
     mythic_encrypts = True
     translation_container = "XenonTranslator"
     build_parameters = [
