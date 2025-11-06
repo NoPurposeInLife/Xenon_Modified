@@ -54,15 +54,15 @@ class XenonAgent(PayloadType):
         BuildParameter(
             name = "default_pipename",
             parameter_type=BuildParameterType.String,
-            default_value="xenon",
+            default_value="xenon_modified",
             description="Default Pipe Name: String to use for named pipes.",
         )
         
     ]
-    agent_path = pathlib.Path(".") / "xenon" / "mythic"
+    agent_path = pathlib.Path(".") / "xenon_modified" / "mythic"
     # agent_icon_path = agent_path / "agent_functions" / "xenon_agent.svg"
     agent_icon_path = agent_path / "agent_functions" / "v1-transparent.png"
-    agent_code_path = pathlib.Path(".") / "xenon" / "agent_code"
+    agent_code_path = pathlib.Path(".") / "xenon_modified" / "agent_code"
     
     build_steps = [
         BuildStep(step_name="Gathering Files", step_description="Making sure all commands have backing files on disk"),
@@ -181,7 +181,7 @@ class XenonAgent(PayloadType):
         ###############################
         
         # CWD - Xenon/Payload_Type/xenon/
-        stub_dir = 'xenon/agent_code/stub'
+        stub_dir = 'xenon_modified/agent_code/stub'
         
         postex_pipename = self.get_parameter('default_pipename')
         cmd_stub = f"make PIPENAME={postex_pipename}"
@@ -200,7 +200,7 @@ class XenonAgent(PayloadType):
         ### Initialize BOF Modules ####
         ###############################
         
-        CORE_MODULE_PATH = pathlib.Path(".") / "xenon" / "agent_code" / "modules" / "core"
+        CORE_MODULE_PATH = pathlib.Path(".") / "xenon_modified" / "agent_code" / "modules" / "core"
         # Add Core Modules 
         bof_filename = "inline-ea.x64.o"
         bof_path = CORE_MODULE_PATH / "inline-ea" / bof_filename
@@ -232,7 +232,7 @@ class XenonAgent(PayloadType):
 
 
         # Add Situational Awareness BOFs to Mythic. (e.g., sa_<cmd>)
-        SA_MODULE_PATH = pathlib.Path(".") / "xenon" / "agent_code" / "modules" / "trustedsec_bofs"        
+        SA_MODULE_PATH = pathlib.Path(".") / "xenon_modified" / "agent_code" / "modules" / "trustedsec_bofs"        
         for cmd in self.commands.get_commands():
             if cmd.startswith("sa_"):
                 bof_stem = cmd[3:]  # Strip 'sa_' prefix
