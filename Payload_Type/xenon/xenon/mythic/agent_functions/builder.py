@@ -14,7 +14,7 @@ import donut
 from ..utils.packer import serialize_int, serialize_bool, serialize_string, generate_raw_c2_transform_definitions
 
 class XenonAgent(PayloadType):
-    name = "xenon_modified"
+    name = "xenon"
     file_extension = "exe"
     author = "@Dillon"
     supported_os = [SupportedOS.Windows]
